@@ -45,6 +45,10 @@ body {
     gap: 24px;
 }
 
+.options a {
+    text-decoration: none;
+}
+
 .option {
     display: flex;
     justify-content: space-evenly;
@@ -52,7 +56,7 @@ body {
     gap: 16px;
 }
 
-.option a {
+.option div {
     font-size: 2.5rem;
     color: var(--red);
 }
@@ -62,12 +66,12 @@ body {
     filter: invert(0%) sepia(0%) saturate(18%) hue-rotate(293deg) brightness(95%) contrast(105%);
 }
 
-.active {
+.active, .option:hover {
     border-radius: 20px;
     background: var(--black);
 }
 
-.active img {
+.active img, .option:hover img {
     filter: invert(20%) sepia(78%) saturate(5469%) hue-rotate(330deg) brightness(100%) contrast(105%);
 }
 
@@ -75,6 +79,29 @@ body {
     grid-column: 2 / 4;
 }
 
-.option a:link {
-    text-decoration: none;
+@media (max-width: 1150px) {
+    .container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .sidebar {
+        height: 100px;
+    }
+
+    .name {
+        display: none;
+    }
+
+    .options {
+        flex-direction: row;
+    }
+
+    .option img {
+        height: 48px;
+    }
+
+    .option div  {
+        display: none;
+    }
 }
