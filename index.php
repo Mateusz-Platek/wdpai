@@ -1,15 +1,16 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloom</title>
-</head>
-<body>
-    <?php
-        echo "Hello there";
-    ?>
-</body>
-</html>
+<?php
 
+require_once "autoloader.php";
+
+$path = trim($_SERVER['REQUEST_URI'], "/");
+$path = parse_url($path, PHP_URL_PATH);
+
+Router::get("login", "DefaultController");
+Router::get("register", "DefaultController");
+Router::get("garden", "DefaultController");
+Router::get("addPlant", "DefaultController");
+Router::get("search", "DefaultController");
+Router::get("friends", "DefaultController");
+Router::get("profile", "DefaultController");
+Router::run($path);
