@@ -9,7 +9,6 @@ $path = parse_url($path, PHP_URL_PATH);
 Router::get("login", "DefaultController");
 Router::get("register", "DefaultController");
 Router::get("garden", "DefaultController");
-Router::get("addPlant", "DefaultController");
 Router::get("search", "DefaultController");
 Router::get("friends", "DefaultController");
 Router::get("profile", "DefaultController");

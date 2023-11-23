@@ -86,7 +86,7 @@ body {
     }
 
     .sidebar {
-        height: 100px;
+        height: 64px;
     }
 
     .name {
@@ -98,7 +98,7 @@ body {
     }
 
     .option img {
-        height: 48px;
+        height: 42px;
     }
 
     .option div  {
