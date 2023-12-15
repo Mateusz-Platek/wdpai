@@ -15,12 +15,21 @@
                 <div class="name">Bloom</div>
             </div>
             <div class="inputs">
-                <form class="login-form">
+                <div class="messages">
+                    <?php
+                    if (isset($messages)) {
+                        foreach ($messages as $message) {
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
+                <form class="login-form" action="login" method="post">
                     <input name="username" type="text" placeholder="Username">
                     <input name="password" type="password" placeholder="Password">
                     <button class="login-btn" type="submit">Login</button>
                 </form>
-                <a class="account" href="register">I don't have an account</a>
+                <a class="account" href="registerPage">I don't have an account</a>
             </div>
         </div>
     </div>

@@ -37,7 +37,7 @@
                     <div>Profile</div>
                 </div>
             </a>
-            <a href="login">
+            <a href="loginPage">
                 <div class="option">
                     <img src="public/images/logout.svg" alt="logout icon">
                     <div>Logout</div>

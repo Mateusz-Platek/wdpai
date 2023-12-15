@@ -3,6 +3,7 @@
 require_once "autoloader.php";
 
 class Router {
+
     public static array $routes;
 
     public static function get(string $url, string $controller): void {
@@ -13,7 +14,7 @@ class Router {
         $action = explode("/", $url)[0];
 
         if ($action == "") {
-            header("Location: login");
+            header("Location: loginPage");
         }
 
         if (!array_key_exists($action, self::$routes)) {

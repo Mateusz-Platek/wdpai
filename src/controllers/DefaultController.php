@@ -4,11 +4,11 @@ require_once "autoloader.php";
 
 class DefaultController extends AppController {
 
-    public function login(): void {
+    public function loginPage(): void {
         $this->render("login");
     }
 
-    public function register(): void {
+    public function registerPage(): void {
         $this->render("register");
     }
 

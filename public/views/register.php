@@ -19,7 +19,7 @@
                     <input name="password" type="password" placeholder="Password">
                     <button class="login-btn" type="submit">Register</button>
                 </form>
-                <a class="account" href="login">I have an account</a>
+                <a class="account" href="loginPage">I have an account</a>
             </div>
         </div>
     </div>

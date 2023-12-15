@@ -49,6 +49,14 @@ img {
     gap: 24px;
 }
 
+.messages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    padding: 12px;
+}
+
 .login-form, .register-form {
     display: flex;
     flex-direction: column;
@@ -81,7 +89,7 @@ input, .login-btn {
     padding: 12px;
 }
 
-.name, input, input::placeholder, a {
+.name, input, input::placeholder, a, .messages {
     color: var(--red);
     text-align: center;
 }
