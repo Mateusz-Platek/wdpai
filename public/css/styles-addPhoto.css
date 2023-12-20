@@ -1,0 +1,100 @@
+:root {
+    --black: #000000;
+    --red: #FF0C63;
+    --white: #FFFFFF;
+}
+
+* {
+    font-family: Megrim, serif;
+    box-sizing: border-box;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    grid-column: 2 / 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    padding: 32px;
+    color: var(--red);
+    font-size: 6rem;
+}
+
+.upload-form {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.upload-form input, textarea {
+    outline: none;
+    background: transparent;
+    color: var(--red);
+}
+
+.upload-form button {
+    background: var(--red);
+    color: var(--black);
+}
+
+.upload-form input, .upload-form button {
+    border-radius: 40px;
+    border: 3px solid var(--red);
+    font-size: 3.5rem;
+    height: 96px;
+    padding: 0;
+}
+
+textarea {
+    border-radius: 40px;
+    border: 3px solid var(--red);
+    font-size: 2rem;
+    padding: 10px 20px;
+}
+
+input, input::placeholder {
+    color: var(--red);
+    text-align: center;
+}
+
+textarea, textarea::placeholder {
+    color: var(--red);
+}
+
+input::file-selector-button {
+    height: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    color: var(--red);
+}
+
+button:hover {
+    color: var(--red);
+    background: var(--black);
+}
+
+@media (max-width: 1150px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .upload-form {
+        max-width: 85%;
+        gap: 16px;
+    }
+
+    textarea {
+        font-size: 1rem;
+    }
+
+    .upload-form input, .upload-form button {
+        font-size: 2rem;
+        height: 58px;
+    }
+}

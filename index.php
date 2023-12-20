@@ -12,4 +12,5 @@ Router::get("garden", "DefaultController");
 Router::get("search", "DefaultController");
 Router::get("friends", "DefaultController");
 Router::get("profile", "DefaultController");
+Router::get("addPhoto", "PhotoController");
 Router::run($path);

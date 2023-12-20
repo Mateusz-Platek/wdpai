@@ -23,6 +23,7 @@ class AppController {
 
         if (file_exists($path)) {
             extract($variables);
+
             include $path;
         }
     }

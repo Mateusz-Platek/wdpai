@@ -96,6 +96,10 @@ body {
         flex-direction: row;
     }
 
+    .option {
+        padding-right: 0;
+    }
+
     .option img {
         height: 42px;
     }
