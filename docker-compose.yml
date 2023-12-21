@@ -12,14 +12,16 @@ services:
       - .:/app/
     links:
       - php
-      - postgres
+      - dbpg
 
   php:
-    image: php:fpm-alpine3.18
+    build:
+      context: .
+      dockerfile: php/Dockerfile
     volumes:
       - .:/app/
 
-  postgres:
+  dbpg:
     image: postgres:alpine3.18
     environment:
       POSTGRES_USER: docker
