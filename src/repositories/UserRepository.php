@@ -5,7 +5,9 @@ require_once "autoloader.php";
 class UserRepository extends Repository {
 
     public function getUser(string $username): ?User {
-        $statement = $this->database->connect()->prepare('SELECT * FROM "Users" WHERE "Username" = :username');
+        $statement = $this->database->connect()->prepare(
+            'SELECT * FROM dockerdb.public.users WHERE dockerdb.public.users.username = :username'
+        );
         $statement->bindParam(":username", $username);
         $statement->execute();
 
@@ -15,8 +17,8 @@ class UserRepository extends Repository {
         }
 
         return new User(
-            $user["Username"],
-            $user["Email"],
-            $user["Password"]);
+            $user["username"],
+            $user["email"],
+            $user["password"]);
     }
 }
