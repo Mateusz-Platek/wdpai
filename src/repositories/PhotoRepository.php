@@ -20,6 +20,27 @@ class PhotoRepository extends Repository {
             $photo["description"]);
     }
 
+    public function getPhotos(): array {
+        $result = [];
+
+        $statement = $this->database->connect()->prepare(
+            'SELECT * FROM dockerdb.public.photos'
+        );
+        $statement->execute();
+
+        $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($photos as $photo) {
+            $result[] = new Photo(
+                $photo["name"],
+                $photo["path"],
+                $photo["description"]
+            );
+        }
+
+        return $result;
+    }
+
     public function addPhoto(Photo $photo): void {
         $statement = $this->database->connect()->prepare(
             'INSERT INTO dockerdb.public.photos (name, path, "usersID", description) VALUES (?, ?, ?, ?)'

@@ -58,6 +58,17 @@
                     </div>
                 </a>
             </div>
+            <div class="photos">
+                <?php foreach ($photos as $photo): ?>
+                <div class="photo">
+                    <img src="public/uploads/<?= $photo->getPath(); ?>">
+                    <div>
+                        <div class="name"><?= $photo->getName(); ?></div>
+                        <div class="description"><?= $photo->getDescription(); ?></div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </body>

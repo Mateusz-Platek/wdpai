@@ -94,7 +94,7 @@ input, .login-btn {
     text-align: center;
 }
 
-input:invalid {
+.no-valid {
     background-color: var(--red);
     color: var(--black);
 }

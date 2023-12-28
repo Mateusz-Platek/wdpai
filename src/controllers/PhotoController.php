@@ -39,10 +39,15 @@ class PhotoController extends AppController {
             );
             $this->photoRepository->addPhoto($photo);
 
-            $this->render("garden");
+            header("Location: garden");
             return;
         }
 
         $this->render("addPhoto", ["messages" => $this->messages]);
+    }
+
+    public function garden(): void {
+        $photos = $this->photoRepository->getPhotos();
+        $this->render("garden", ["photos" => $photos]);
     }
 }

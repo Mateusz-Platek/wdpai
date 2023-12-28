@@ -12,10 +12,6 @@ class DefaultController extends AppController {
         $this->render("register");
     }
 
-    public function garden(): void {
-        $this->render("garden");
-    }
-
     public function search(): void {
         $this->render("search");
     }
