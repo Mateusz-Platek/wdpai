@@ -20,6 +20,19 @@ class PhotoRepository extends Repository {
             $photo["description"]);
     }
 
+    public function getPhotoByName(string $name): array
+    {
+        $searchName = '%' .strtolower($name). '%';
+
+        $statement = $this->database->connect()->prepare(
+            'SELECT * FROM dockerdb.public.photos WHERE LOWER(photos.name) LIKE :search OR LOWER(photos.description) LIKE :search'
+        );
+        $statement->bindParam(":search", $searchName, PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getPhotos(): array {
         $result = [];
 

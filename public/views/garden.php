@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/styles-sidebar.css">
     <link rel="stylesheet" type="text/css" href="public/css/styles-garden.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
+    <script type="text/javascript" src="public/javascript/search.js" defer></script>
     <title>Garden</title>
 </head>
 <body>
@@ -47,10 +48,10 @@
         </div>
         <div class="main">
             <div class="top-bar">
-                <form class="search-bar">
+                <div class="search-bar">
                     <input name="search" type="text" placeholder="Search">
-                    <button type="submit"><img src="public/images/search.svg" alt="search icon"></button>
-                </form>
+                    <button><img src="public/images/search.svg" alt="search icon"></button>
+                </div>
                 <a href="addPhoto">
                     <div class="add-photo">
                         <img src="public/images/add.svg" alt="add icon">
@@ -61,7 +62,7 @@
             <div class="photos">
                 <?php foreach ($photos as $photo): ?>
                 <div class="photo">
-                    <img src="public/uploads/<?= $photo->getPath(); ?>">
+                    <img src="public/uploads/<?= $photo->getPath(); ?>" alt="photo">
                     <div>
                         <div class="name"><?= $photo->getName(); ?></div>
                         <div class="description"><?= $photo->getDescription(); ?></div>
@@ -72,4 +73,13 @@
         </div>
     </div>
 </body>
+<template class="photo-template">
+    <div class="photo">
+        <img src="" alt="photo">
+        <div>
+            <div class="name">name</div>
+            <div class="description">description</div>
+        </div>
+    </div>
+</template>
 </html>

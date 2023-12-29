@@ -13,4 +13,5 @@ Router::get("search", "DefaultController");
 Router::get("friends", "DefaultController");
 Router::get("profile", "DefaultController");
 Router::get("addPhoto", "PhotoController");
+Router::get("search", "PhotoController");
 Router::run($path);
