@@ -2,6 +2,8 @@
 
 require_once "autoloader.php";
 
+session_start();
+
 class SecurityController extends AppController {
 
     public function login() : void {
@@ -25,11 +27,44 @@ class SecurityController extends AppController {
             return;
         }
 
-        if ($user->getPassword() !== $password) {
+        if (!password_verify($password, $user->getPassword())) {
             $this->render("login", ["messages" => ["Wrong password"]]);
             return;
         }
 
+        $_SESSION["username"] = $username;
+
         header("Location: garden");
+    }
+
+    public function register(): void {
+        $userRepository = new UserRepository();
+
+        if (!$this->isPost()) {
+            $this->render("register");
+            return;
+        }
+
+        $username = $_POST["username"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        $user = $userRepository->getUser($username);
+        if ($user) {
+            $this->render("register", ["messages" => ["User exists"]]);
+            return;
+        }
+
+        $userRepository->addUser($username, $email, $password);
+
+        $_SESSION["username"] = $username;
+
+        header("Location: garden");
+    }
+
+    public function logout(): void {
+        if (session_destroy()) {
+            header("Location: loginPage");
+        }
     }
 }

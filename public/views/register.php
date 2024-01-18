@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +19,16 @@
         <div class="content">
             <div class="inputs">
                 <div class="name">Bloom</div>
-                <form class="register-form">
+                <div class="messages">
+                    <?php
+                    if (isset($messages)) {
+                        foreach ($messages as $message) {
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
+                <form class="register-form" action="register" method="post">
                     <input name="username" type="text" placeholder="Username">
                     <input name="email" type="email" placeholder="Email@email.com">
                     <input name="password" type="password" placeholder="Password">

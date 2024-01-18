@@ -1,33 +1,6 @@
 const search = document.querySelector('input[name="search"]');
 const photosContainer = document.querySelector('div[class="photos"]');
 
-search.addEventListener("keyup", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-
-        const data = {search: this.value};
-
-        fetch("/search", {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then(function (response) {
-            return response.json();
-        }).then(function (photos) {
-            photosContainer.innerHTML = "";
-            loadPhotos(photos);
-        });
-    }
-});
-
-function loadPhotos(photos) {
-    photos.forEach(photo => {
-        createPhoto(photo);
-    })
-}
-
 function createPhoto(photo) {
     const template = document.querySelector(".photo-template");
     const clone = template.content.cloneNode(true);
@@ -39,3 +12,29 @@ function createPhoto(photo) {
     description.innerHTML = photo.description;
     photosContainer.appendChild(clone);
 }
+
+function loadPhotos(photos) {
+    photos.forEach(photo => {
+        createPhoto(photo);
+    })
+}
+
+search.addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+
+        const data = {search: this.value};
+        fetch("/searchPhotos", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then(function (response) {
+            return response.json();
+        }).then(function (photos) {
+            photosContainer.innerHTML = "";
+            loadPhotos(photos);
+        });
+    }
+});

@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["username"])) {
+    header("Location: loginPage");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +45,7 @@
                     <div>Profile</div>
                 </div>
             </a>
-            <a href="loginPage">
+            <a href="logout">
                 <div class="option">
                     <img src="public/images/logout.svg" alt="logout icon">
                     <div>Logout</div>

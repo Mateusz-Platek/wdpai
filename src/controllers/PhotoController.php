@@ -51,7 +51,7 @@ class PhotoController extends AppController {
         $this->render("garden", ["photos" => $photos]);
     }
 
-    public function search(): void {
+    public function searchPhotos(): void {
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : "";
 
         if ($contentType === "application/json") {
