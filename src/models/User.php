@@ -6,12 +6,14 @@ class User {
     private string $username;
     private string $email;
     private string $password;
+    private string $type;
 
-    public function __construct(int $id, string $username, string $email, string $password) {
+    public function __construct(int $id, string $username, string $email, string $password, string $type) {
         $this->id = $id;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
+        $this->type = $type;
     }
 
     public function getId(): int
@@ -31,5 +33,10 @@ class User {
 
     public function getPassword(): string {
         return $this->password;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
     }
 }

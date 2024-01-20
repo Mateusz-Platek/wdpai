@@ -57,91 +57,28 @@ if (!isset($_SESSION["username"])) {
         </div>
     </div>
     <div class="main">
-        <form class="search-bar">
-            <input name="search" type="text" placeholder="Search">
-            <button type="submit"><img src="public/images/search.svg" alt="search icon"></button>
-        </form>
+        <div class="top-bar">
+            <form class="search-bar">
+                <input name="search" type="text" placeholder="Search">
+                <button type="submit"><img src="public/images/search.svg" alt="search icon"></button>
+            </form>
+            <a href="pending">
+                <div class="add-photo">
+                    <img src="public/images/profile.svg" alt="add icon">
+                    <div>Pending</div>
+                </div>
+            </a>
+        </div>
         <div class="people">
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
-            <div class="person">
-                <img src="public/images/test-face.jpg" alt="face">
-                <div>Mark Johnson</div>
-            </div>
+            <?php foreach ($friends as $friend): ?>
+                <div class="person">
+                    <div class="name"><?= $friend->getUsername() ?></div>
+                    <form method="post" action="removeFriend">
+                        <input type="hidden" name="userID" value=<?= $friend->getID() ?>>
+                        <button type="submit">Remove</button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

@@ -22,7 +22,7 @@ class PhotoRepository extends Repository {
         );
     }
 
-    public function getPhotoByName(string $name): array
+    public function getPhotosByName(string $name): array
     {
         $searchName = '%' .strtolower($name). '%';
 

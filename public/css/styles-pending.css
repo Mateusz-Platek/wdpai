@@ -20,49 +20,10 @@
     overflow-y: scroll;
 }
 
-.top-bar {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
-
-.top-bar a {
-    text-decoration: none;
-}
-
-.search-bar {
-    height: 60px;
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--white);
-    border-radius: 20px;
-    margin: 30px 0;
-    padding: 0 10px;
-}
-
-.search-bar input {
-    height: 100%;
-    width: 100%;
-    background: transparent;
-    outline: none;
-    border: none;
-    font-size: 2rem;
-    padding: 10px;
-}
-
-.search-bar button {
-    background: transparent;
-    height: 100%;
-    border: none;
-}
-
-.search-bar img {
-    height: 100%;
-    filter: invert(0%) sepia(0%) saturate(18%) hue-rotate(293deg) brightness(95%) contrast(105%);
+.top-name {
+    color: var(--red);
+    font-size: 4.5rem;
+    margin: 20px 0;
 }
 
 .add-photo {
@@ -83,6 +44,7 @@
 }
 
 .people {
+    margin: 30px 0 0;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -133,16 +95,6 @@
 }
 
 @media (max-width: 1150px) {
-    .search-bar {
-        height: 50px;
-        width: 85%;
-        margin: 20px 0;
-    }
-
-    .search-bar input {
-        font-size: 1.8rem;
-    }
-
     .people {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 20px;

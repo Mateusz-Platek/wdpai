@@ -10,11 +10,15 @@ Router::get("registerPage", "DefaultController");
 Router::get("login", "SecurityController");
 Router::get("register", "SecurityController");
 Router::get("garden", "PhotoController");
-Router::get("search", "DefaultController");
+Router::get("search", "UserController");
 Router::get("friends", "UserController");
+Router::get("removeFriend", "UserController");
+Router::get("addFriend", "UserController");
 Router::get("profile", "DefaultController");
 Router::get("addPhoto", "PhotoController");
 Router::get("searchPhotos", "PhotoController");
 Router::get("logout", "SecurityController");
+Router::get("pending", "UserController");
+Router::get("acceptFriend", "UserController");
 
 Router::run($path);

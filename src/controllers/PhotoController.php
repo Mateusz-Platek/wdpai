@@ -58,6 +58,7 @@ class PhotoController extends AppController {
     }
 
     public function searchPhotos(): void {
+        $photoRepository = new PhotoRepository();
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : "";
 
         if ($contentType === "application/json") {
@@ -67,7 +68,7 @@ class PhotoController extends AppController {
             header("Content-type: application/json");
             http_response_code(200);
 
-            echo json_encode($this->photoRepository->getPhotoByName($decoded["search"]));
+            echo json_encode($photoRepository->getPhotosByName($decoded["search"]));
         }
     }
 }
