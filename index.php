@@ -11,7 +11,7 @@ Router::get("login", "SecurityController");
 Router::get("register", "SecurityController");
 Router::get("garden", "PhotoController");
 Router::get("search", "DefaultController");
-Router::get("friends", "DefaultController");
+Router::get("friends", "UserController");
 Router::get("profile", "DefaultController");
 Router::get("addPhoto", "PhotoController");
 Router::get("searchPhotos", "PhotoController");

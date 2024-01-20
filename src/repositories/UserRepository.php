@@ -17,16 +17,36 @@ class UserRepository extends Repository {
         }
 
         return new User(
-            $user["usersID"],
+            $user["userID"],
             $user["username"],
             $user["email"],
-            $user["password"]);
+            $user["password"]
+        );
     }
 
     public function getUserFriends(string $username): array {
         $result = [];
 
+        $user = $this->getUser($username);
+        $userID = $user->getId();
 
+        $statement = $this->database->connect()->prepare(
+            'SELECT * FROM friendships JOIN users ON friendships."userID2" = users."userID" WHERE friendships."userID1" = :userID'
+        );
+
+        $statement->bindParam(":userID", $userID);
+        $statement->execute();
+
+        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($users as $user) {
+            $result[] = new User(
+                $user["userID"],
+                $user["username"],
+                $user["email"],
+                $user["password"]
+            );
+        }
 
         return $result;
     }

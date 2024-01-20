@@ -66,7 +66,6 @@ class PhotoRepository extends Repository {
 
         $userRepository = new UserRepository();
         $user = $userRepository->getUser($_SESSION["username"]);
-
         $userID = $user->getId();
 
         $statement->execute([
