@@ -17,9 +17,18 @@ class UserRepository extends Repository {
         }
 
         return new User(
+            $user["usersID"],
             $user["username"],
             $user["email"],
             $user["password"]);
+    }
+
+    public function getUserFriends(string $username): array {
+        $result = [];
+
+
+
+        return $result;
     }
 
     public function addUser(string $username, string $email, string $password): void {

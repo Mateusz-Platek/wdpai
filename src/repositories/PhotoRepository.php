@@ -15,9 +15,11 @@ class PhotoRepository extends Repository {
         }
 
         return new Photo(
+            $photo["photosID"],
             $photo["name"],
             $photo["path"],
-            $photo["description"]);
+            $photo["description"]
+        );
     }
 
     public function getPhotoByName(string $name): array
@@ -33,18 +35,20 @@ class PhotoRepository extends Repository {
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getPhotos(): array {
+    public function getUserPhotos(string $username): array {
         $result = [];
 
         $statement = $this->database->connect()->prepare(
-            'SELECT * FROM dockerdb.public.photos'
+            'SELECT * FROM photos JOIN users ON photos."usersID" = users."usersID" WHERE users.username = :username'
         );
+        $statement->bindParam(":username", $username);
         $statement->execute();
 
         $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($photos as $photo) {
             $result[] = new Photo(
+                $photo["photosID"],
                 $photo["name"],
                 $photo["path"],
                 $photo["description"]
@@ -54,12 +58,16 @@ class PhotoRepository extends Repository {
         return $result;
     }
 
+
     public function addPhoto(Photo $photo): void {
         $statement = $this->database->connect()->prepare(
-            'INSERT INTO dockerdb.public.photos (name, path, "usersID", description) VALUES (?, ?, ?, ?)'
+            'INSERT INTO photos (name, path, "usersID", description) VALUES (?, ?, ?, ?)'
         );
 
-        $userID = 1;
+        $userRepository = new UserRepository();
+        $user = $userRepository->getUser($_SESSION["username"]);
+
+        $userID = $user->getId();
 
         $statement->execute([
             $photo->getName(),
