@@ -4,7 +4,7 @@ class PhotoRepository extends Repository {
 
     public function getPhoto(int $id): ?Photo {
         $statement = $this->database->connect()->prepare(
-            'SELECT * FROM dockerdb.public.photos WHERE dockerdb.public.photos."photosID" = :id'
+            'SELECT * FROM dockerdb.public.photos WHERE dockerdb.public.photos."photoID" = :id'
         );
         $statement->bindParam(":id", $id, PDO::PARAM_INT);
         $statement->execute();
@@ -39,7 +39,7 @@ class PhotoRepository extends Repository {
         $result = [];
 
         $statement = $this->database->connect()->prepare(
-            'SELECT * FROM photos JOIN users ON photos."usersID" = users."usersID" WHERE users.username = :username'
+            'SELECT * FROM photos JOIN users ON photos."usersID" = users."userID" WHERE users.username = :username'
         );
         $statement->bindParam(":username", $username);
         $statement->execute();
