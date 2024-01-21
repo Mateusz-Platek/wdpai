@@ -20,5 +20,6 @@ Router::get("searchPhotos", "PhotoController");
 Router::get("logout", "SecurityController");
 Router::get("pending", "UserController");
 Router::get("acceptFriend", "UserController");
+Router::get("removeUser", "UserController");
 
 Router::run($path);

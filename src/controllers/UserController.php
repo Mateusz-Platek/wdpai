@@ -108,4 +108,13 @@ class UserController extends AppController {
             "type" => $loggedUser->getType()
         ]);
     }
+
+    public function removeUser(): void {
+        $userRepository = new UserRepository();
+        $userID = $_POST["userID"];
+
+        $userRepository->removeUser($userID);
+
+        $this->search();
+    }
 }

@@ -207,4 +207,13 @@ class UserRepository extends Repository {
         $statement->bindParam(":password", $hashedPassword);
         $statement->execute();
     }
+
+    public function removeUser(int $userID): void {
+        $statement = $this->database->connect()->prepare(
+            'DELETE FROM users WHERE users."userID" = :userID'
+        );
+        $statement->bindParam(":userID", $userID);
+
+        $statement->execute();
+    }
 }

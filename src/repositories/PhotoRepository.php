@@ -48,7 +48,7 @@ class PhotoRepository extends Repository {
 
         foreach ($photos as $photo) {
             $result[] = new Photo(
-                $photo["photosID"],
+                $photo["photoID"],
                 $photo["name"],
                 $photo["path"],
                 $photo["description"]

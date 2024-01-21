@@ -70,7 +70,10 @@ if (!isset($_SESSION["username"])) {
                         <button type="submit">Add</button>
                     </form>
                     <?php if ($user->getType() != "admin" && $type == "admin") {
-                        echo '<button>Delete</button>';
+                        echo '<form method="post" action="removeUser">
+                            <input type="hidden" name="userID" value=' . $user->getID() . '>
+                            <button type="submit">Delete</button>
+                            </form>';
                     } ?>
                 </div>
             <?php endforeach; ?>
@@ -79,7 +82,10 @@ if (!isset($_SESSION["username"])) {
                     <div><?= $friend->getUsername() ?></div>
                     <button type="submit" class="added">Added</button>
                     <?php if ($friend->getType() != "admin" && $type == "admin") {
-                        echo '<button>Delete</button>';
+                        echo '<form method="post" action="removeUser">
+                            <input type="hidden" name="userID" value=' . $friend->getID() . '>
+                            <button type="submit">Delete</button>
+                            </form>';
                     } ?>
                 </div>
             <?php endforeach; ?>
@@ -88,7 +94,10 @@ if (!isset($_SESSION["username"])) {
                     <div><?= $pendingFriend->getUsername() ?></div>
                     <button type="submit" class="added">Pending</button>
                     <?php if ($pendingFriend->getType() != "admin" && $type == "admin") {
-                        echo '<button>Delete</button>';
+                        echo '<form method="post" action="removeUser">
+                            <input type="hidden" name="userID" value=' . $pendingFriend->getID() . '>
+                            <button type="submit">Delete</button>
+                            </form>';
                     } ?>
                 </div>
             <?php endforeach; ?>
