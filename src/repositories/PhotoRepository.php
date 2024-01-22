@@ -2,25 +2,25 @@
 
 class PhotoRepository extends Repository {
 
-    public function getPhoto(int $id): ?Photo {
-        $statement = $this->database->connect()->prepare(
-            'SELECT * FROM dockerdb.public.photos WHERE dockerdb.public.photos."photoID" = :id'
-        );
-        $statement->bindParam(":id", $id, PDO::PARAM_INT);
-        $statement->execute();
-
-        $photo = $statement->fetch(PDO::FETCH_ASSOC);
-        if (!$photo) {
-            return null;
-        }
-
-        return new Photo(
-            $photo["photosID"],
-            $photo["name"],
-            $photo["path"],
-            $photo["description"]
-        );
-    }
+//    public function getPhoto(int $id): ?Photo {
+//        $statement = $this->database->connect()->prepare(
+//            'SELECT * FROM dockerdb.public.photos WHERE dockerdb.public.photos."photoID" = :id'
+//        );
+//        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+//        $statement->execute();
+//
+//        $photo = $statement->fetch(PDO::FETCH_ASSOC);
+//        if (!$photo) {
+//            return null;
+//        }
+//
+//        return new Photo(
+//            $photo["photosID"],
+//            $photo["name"],
+//            $photo["path"],
+//            $photo["description"]
+//        );
+//    }
 
     public function getPhotosByName(string $name): array
     {

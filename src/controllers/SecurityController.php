@@ -6,6 +6,14 @@ session_start();
 
 class SecurityController extends AppController {
 
+    public function loginPage(): void {
+        $this->render("login");
+    }
+
+    public function registerPage(): void {
+        $this->render("register");
+    }
+
     public function login() : void {
         $userRepository = new UserRepository();
 

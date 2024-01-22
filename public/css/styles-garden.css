@@ -20,6 +20,12 @@
     overflow-y: scroll;
 }
 
+.top-name {
+    color: var(--red);
+    font-size: 4.5rem;
+    margin: 20px 0;
+}
+
 .title {
     color: var(--red);
     font-size: 4.5rem;

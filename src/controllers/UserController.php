@@ -20,6 +20,7 @@ class UserController extends AppController {
 
     public function removeFriend(): void {
         $userRepository = new UserRepository();
+        $friendShipRepository = new FriendshipRepository();
 
         $username = $_SESSION["username"];
 
@@ -28,12 +29,13 @@ class UserController extends AppController {
         $userID1 = $user->getId();
         $userID2 = $_POST["userID"];
 
-        $userRepository->removeFriendship($userID1, $userID2);
+        $friendShipRepository->removeFriendship($userID1, $userID2);
 
         $this->friends();
     }
 
     public function addFriend(): void {
+        $friendshipRepository = new FriendshipRepository();
         $userRepository = new UserRepository();
 
         $username = $_SESSION["username"];
@@ -43,12 +45,13 @@ class UserController extends AppController {
         $userID1 = $user->getId();
         $userID2 = $_POST["userID"];
 
-        $userRepository->addFriendship($userID1, $userID2);
+        $friendshipRepository->addFriendship($userID1, $userID2);
 
         $this->search();
     }
 
     public function acceptFriend(): void {
+        $friendshipRepository = new FriendshipRepository();
         $userRepository = new UserRepository();
 
         $username = $_SESSION["username"];
@@ -58,7 +61,7 @@ class UserController extends AppController {
         $userID1 = $user->getId();
         $userID2 = $_POST["userID"];
 
-        $userRepository->acceptFriendship($userID1, $userID2);
+        $friendshipRepository->acceptFriendship($userID1, $userID2);
 
         $this->pending();
     }
@@ -107,6 +110,14 @@ class UserController extends AppController {
             "pendingFriends" => $pendingFriends,
             "type" => $loggedUser->getType()
         ]);
+    }
+
+    public function removeUsers(): void {
+        $userRepository = new UserRepository();
+
+        $users = $userRepository->getUsers($_SESSION["username"]);
+
+        $this->render("removeUsers", ["users" => $users]);
     }
 
     public function removeUser(): void {

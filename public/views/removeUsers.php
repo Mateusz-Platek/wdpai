@@ -14,7 +14,7 @@ if (!isset($_SESSION["username"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="public/css/styles-sidebar.css">
-    <link rel="stylesheet" type="text/css" href="public/css/styles-garden.css">
+    <link rel="stylesheet" type="text/css" href="public/css/styles-friends-search.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
     <title>Profile</title>
 </head>
@@ -50,15 +50,10 @@ if (!isset($_SESSION["username"])) {
         </div>
     </div>
     <div class="main">
-        <div class="title"><?= $username ?> photos</div>
-        <div class="photos">
-            <?php foreach ($userPhotos as $userPhoto): ?>
-                <div class="photo">
-                    <img src="public/uploads/<?= $userPhoto->getPath(); ?>" alt="photo">
-                    <div>
-                        <div class="name"><?= $userPhoto->getName(); ?></div>
-                        <div class="description"><?= $userPhoto->getDescription(); ?></div>
-                    </div>
+        <div class="people">
+            <?php foreach ($users as $user): ?>
+                <div class="person">
+                    <div class="name"><?= $user->getUsername() ?></div>
                 </div>
             <?php endforeach; ?>
         </div>

@@ -43,12 +43,6 @@ if (!isset($_SESSION["username"])) {
                         <div>Friends</div>
                     </div>
                 </a>
-                <a href="profile">
-                    <div class="option">
-                        <img src="public/images/profile.svg" alt="profile icon">
-                        <div>Profile</div>
-                    </div>
-                </a>
                 <a href="logout">
                     <div class="option">
                         <img src="public/images/logout.svg" alt="logout icon">
@@ -58,6 +52,7 @@ if (!isset($_SESSION["username"])) {
             </div>
         </div>
         <div class="main">
+            <div class="top-name">Your garden</div>
             <div class="top-bar">
                 <div class="search-bar">
                     <input name="search" type="text" placeholder="Search">
@@ -66,7 +61,7 @@ if (!isset($_SESSION["username"])) {
                 <a href="addPhoto">
                     <div class="add-photo">
                         <img src="public/images/add.svg" alt="add icon">
-                        <div>Add photo</div>
+                        <div>Add</div>
                     </div>
                 </a>
             </div>

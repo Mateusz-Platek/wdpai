@@ -41,12 +41,6 @@ if (!isset($_SESSION["username"])) {
                     <div>Friends</div>
                 </div>
             </a>
-            <a href="profile">
-                <div class="option">
-                    <img src="public/images/profile.svg" alt="profile icon">
-                    <div>Profile</div>
-                </div>
-            </a>
             <a href="logout">
                 <div class="option">
                     <img src="public/images/logout.svg" alt="logout icon">

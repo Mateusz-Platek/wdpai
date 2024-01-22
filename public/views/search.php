@@ -42,12 +42,6 @@ if (!isset($_SESSION["username"])) {
                     <div>Friends</div>
                 </div>
             </a>
-            <a href="profile">
-                <div class="option">
-                    <img src="public/images/profile.svg" alt="profile icon">
-                    <div>Profile</div>
-                </div>
-            </a>
             <a href="logout">
                 <div class="option">
                     <img src="public/images/logout.svg" alt="logout icon">
@@ -57,10 +51,18 @@ if (!isset($_SESSION["username"])) {
         </div>
     </div>
     <div class="main">
-        <form class="search-bar">
-            <input name="search" type="text" placeholder="Search">
-            <button type="submit"><img src="public/images/search.svg" alt="search icon"></button>
-        </form>
+        <div class="top-bar">
+            <form class="search-bar">
+                <input name="search" type="text" placeholder="Search">
+                <button type="submit"><img src="public/images/search.svg" alt="search icon"></button>
+            </form>
+            <a href="removeUsers">
+                <div class="add-photo">
+                    <img src="public/images/remove.svg" alt="add icon">
+                    <div>Remove</div>
+                </div>
+            </a>
+        </div>
         <div class="people">
             <?php foreach ($users as $user): ?>
                 <div class="person">
