@@ -47,6 +47,16 @@ class PhotoController extends AppController {
         $this->render("addPhoto", ["messages" => $this->messages]);
     }
 
+    public function userPhotos(): void {
+        $photoRepository = new PhotoRepository();
+
+        $username = $_POST["username"];
+
+        $userPhotos = $photoRepository->getUserPhotos($username);
+
+        $this->render("userPhotos", ["userPhotos" => $userPhotos, "username" => $username]);
+    }
+
     public function garden(): void {
         $photoRepository = new PhotoRepository();
 

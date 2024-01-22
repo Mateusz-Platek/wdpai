@@ -20,6 +20,12 @@
     overflow-y: scroll;
 }
 
+.title {
+    color: var(--red);
+    font-size: 4.5rem;
+    margin: 30px 0;
+}
+
 .top-bar {
     display: flex;
     justify-content: center;
