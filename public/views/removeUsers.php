@@ -14,7 +14,8 @@ if (!isset($_SESSION["username"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="public/css/styles-sidebar.css">
-    <link rel="stylesheet" type="text/css" href="public/css/styles-friends-search.css">
+    <link rel="stylesheet" type="text/css" href="public/css/styles-users.css">
+    <link rel="stylesheet" type="text/css" href="public/css/styles-topbar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
     <title>Profile</title>
 </head>
@@ -50,6 +51,13 @@ if (!isset($_SESSION["username"])) {
         </div>
     </div>
     <div class="main">
+        <div class="top-name">Remove users</div>
+        <div class="top-bar">
+            <div class="search-bar">
+                <input name="search" type="text" placeholder="Search">
+                <button><img src="public/images/search.svg" alt="search icon"></button>
+            </div>
+        </div>
         <div class="people">
             <?php foreach ($users as $user): ?>
             <div class="person">

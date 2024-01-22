@@ -15,8 +15,8 @@ if (!isset($_SESSION["username"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="public/css/styles-sidebar.css">
-    <link rel="stylesheet" type="text/css" href="public/css/styles-friends-search.css">
-    <link rel="stylesheet" type="text/css" href="public/css/styles-top-side.css">
+    <link rel="stylesheet" type="text/css" href="public/css/styles-users.css">
+    <link rel="stylesheet" type="text/css" href="public/css/styles-topbar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
     <title>Search</title>
 </head>
@@ -70,7 +70,7 @@ if (!isset($_SESSION["username"])) {
         <div class="people">
             <?php foreach ($users as $user): ?>
                 <div class="person">
-                    <div><?= $user->getUsername() ?></div>
+                    <div class="name"><?= $user->getUsername() ?></div>
                     <form method="post" action="addFriend">
                         <input type="hidden" name="userID" value=<?= $user->getID() ?>>
                         <button type="submit">Add</button>
@@ -79,13 +79,13 @@ if (!isset($_SESSION["username"])) {
             <?php endforeach; ?>
             <?php foreach ($friends as $friend): ?>
                 <div class="person">
-                    <div><?= $friend->getUsername() ?></div>
+                    <div class="name"><?= $friend->getUsername() ?></div>
                     <button type="submit" class="added">Added</button>
                 </div>
             <?php endforeach; ?>
             <?php foreach ($pendingFriends as $pendingFriend): ?>
                 <div class="person">
-                    <div><?= $pendingFriend->getUsername() ?></div>
+                    <div class="name"><?= $pendingFriend->getUsername() ?></div>
                     <button type="submit" class="added">Pending</button>
                 </div>
             <?php endforeach; ?>

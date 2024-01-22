@@ -15,7 +15,7 @@ if (!isset($_SESSION["username"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="public/css/styles-sidebar.css">
     <link rel="stylesheet" type="text/css" href="public/css/styles-pending.css">
-    <link rel="stylesheet" type="text/css" href="public/css/styles-top-side.css">
+    <link rel="stylesheet" type="text/css" href="public/css/styles-topbar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
     <title>Pending</title>
 </head>
@@ -55,15 +55,17 @@ if (!isset($_SESSION["username"])) {
         <div class="people">
             <?php foreach ($pendingFriends as $pendingFriend): ?>
             <div class="person">
-                <div><?= $pendingFriend->getUsername() ?></div>
-                <form method="post" action="acceptFriend">
-                    <input type="hidden" name="userID" value=<?= $pendingFriend->getID() ?>>
-                    <button type="submit">Accept</button>
-                </form>
-                <form method="post" action="removeFriend">
-                    <input type="hidden" name="userID" value=<?= $pendingFriend->getID() ?>>
-                    <button type="submit">Decline</button>
-                </form>
+                <div class="name"><?= $pendingFriend->getUsername() ?></div>
+                <div class="invite-options">
+                    <form method="post" action="acceptFriend">
+                        <input type="hidden" name="userID" value=<?= $pendingFriend->getID() ?>>
+                        <button type="submit">Accept</button>
+                    </form>
+                    <form method="post" action="removeFriend">
+                        <input type="hidden" name="userID" value=<?= $pendingFriend->getID() ?>>
+                        <button type="submit">Decline</button>
+                    </form>
+                </div>
             </div>
             <?php endforeach; ?>
         </div>

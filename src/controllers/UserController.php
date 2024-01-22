@@ -11,9 +11,7 @@ class UserController extends AppController {
     public function friends(): void {
         $userRepository = new UserRepository();
 
-        $username = $_SESSION["username"];
-
-        $friends = $userRepository->getUserFriends($username);
+        $friends = $userRepository->getUserFriends($_SESSION["username"]);
 
         $this->render("friends", ["friends" => $friends]);
     }

@@ -10,16 +10,6 @@
     box-sizing: border-box;
 }
 
-.main {
-    grid-column: 2 / 5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    overflow-y: scroll;
-}
-
 .people {
     width: 100%;
     display: grid;
@@ -38,6 +28,10 @@
     justify-content: center;
     align-items: center;
     gap: 12px;
+}
+
+.person .name {
+    font-size: 2.0rem;
 }
 
 .person div {
@@ -71,16 +65,6 @@
 }
 
 @media (max-width: 1150px) {
-    .search-bar {
-        height: 50px;
-        width: 85%;
-        margin: 20px 0;
-    }
-
-    .search-bar input {
-        font-size: 1.8rem;
-    }
-
     .people {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 20px;

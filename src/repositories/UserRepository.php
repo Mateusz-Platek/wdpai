@@ -33,7 +33,6 @@ class UserRepository extends Repository {
         $loggedUser = $userRepository->getUser($username);
 
         $user = $this->getUser($username);
-        $userID = $user->getId();
 
         $statement = $this->database->connect()->prepare(
             'SELECT * FROM users JOIN "accountTypes" ON users."accountTypeID" = "accountTypes"."accountTypeID"'

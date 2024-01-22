@@ -15,6 +15,7 @@ if (!isset($_SESSION["username"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="public/css/styles-sidebar.css">
+    <link rel="stylesheet" type="text/css" href="public/css/styles-topbar.css">
     <link rel="stylesheet" type="text/css" href="public/css/styles-addPhoto.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
     <title>Add Photo</title>
@@ -42,12 +43,6 @@ if (!isset($_SESSION["username"])) {
                         <div>Friends</div>
                     </div>
                 </a>
-                <a href="profile">
-                    <div class="option">
-                        <img src="public/images/profile.svg" alt="profile icon">
-                        <div>Profile</div>
-                    </div>
-                </a>
                 <a href="logout">
                     <div class="option">
                         <img src="public/images/logout.svg" alt="logout icon">
@@ -57,7 +52,7 @@ if (!isset($_SESSION["username"])) {
             </div>
         </div>
         <div class="main">
-            <div class="title">Upload your photo</div>
+            <div class="top-name">Upload your photo</div>
             <div class="messages">
                 <?php
                 if (isset($messages)) {

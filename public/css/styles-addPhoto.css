@@ -9,21 +9,6 @@
     box-sizing: border-box;
 }
 
-.main {
-    width: 100%;
-    height: 100%;
-    grid-column: 2 / 5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.title {
-    padding: 32px;
-    color: var(--red);
-    font-size: 6rem;
-}
-
 .upload-form {
     max-width: 60%;
     display: flex;

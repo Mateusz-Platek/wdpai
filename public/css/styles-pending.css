@@ -10,44 +10,39 @@
     box-sizing: border-box;
 }
 
-.main {
-    grid-column: 2 / 5;
+.people {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    overflow-y: scroll;
-}
-
-.people {
-    margin: 30px 0 0;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 40px;
+    gap: 20px;
     padding: 0 30px 30px;
     box-sizing: border-box;
 }
 
 .person {
-    height: 200px;
+    height: 80px;
     border: solid 2px var(--white);
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     border-radius: 25px;
-    justify-content: center;
     align-items: center;
-    gap: 12px;
+}
+
+.person .name {
+    font-size: 2rem;
+    overflow: hidden;
 }
 
 .person div {
-    height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--white);
     font-size: 1.4rem;
+}
+
+.person .invite-options {
+    display: flex;
 }
 
 .person form {
@@ -65,12 +60,6 @@
     font-size: 1.5rem;
 }
 
-.person button.added {
-    background: var(--black);
-    border: var(--red) 2px solid;
-    color: var(--red);
-}
-
 @media (max-width: 1150px) {
     .people {
         grid-template-columns: repeat(2, 1fr);
@@ -79,7 +68,15 @@
     }
 
     .person {
-        height: 250px;
+        height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .person .invite-options {
+        width: 100%;
     }
 
     .person div {

@@ -4,6 +4,11 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+if (!isset($_SESSION["username"])) {
+    echo 'error';
+    exit();
+}
+
 require_once "autoloader.php";
 
 class PhotoController extends AppController {
