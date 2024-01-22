@@ -20,29 +20,6 @@
     overflow-y: scroll;
 }
 
-.top-name {
-    color: var(--red);
-    font-size: 4.5rem;
-    margin: 20px 0;
-}
-
-.add-photo {
-    height: 60px;
-    font-size: 2rem;
-    background-color: var(--red);
-    color: var(--black);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 0 8px;
-}
-
-.add-photo img {
-    height: 100%;
-}
-
 .people {
     margin: 30px 0 0;
     width: 100%;

@@ -60,16 +60,18 @@ class PhotoController extends AppController {
     public function garden(): void {
         $photoRepository = new PhotoRepository();
 
-        $username = $_SESSION["username"];
-
-        $photos = $photoRepository->getUserPhotos($username);
+        $photos = $photoRepository->getUserPhotos($_SESSION["username"]);
 
         $this->render("garden", ["photos" => $photos]);
     }
 
     public function searchPhotos(): void {
         $photoRepository = new PhotoRepository();
+        $userRepository = new UserRepository();
+
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : "";
+
+        $user = $userRepository->getUser($_SESSION["username"]);
 
         if ($contentType === "application/json") {
             $content = trim(file_get_contents("php://input"));
@@ -78,7 +80,7 @@ class PhotoController extends AppController {
             header("Content-type: application/json");
             http_response_code(200);
 
-            echo json_encode($photoRepository->getPhotosByName($decoded["search"]));
+            echo json_encode($photoRepository->getPhotosByName($decoded["search"], $user->getId()));
         }
     }
 }

@@ -16,6 +16,7 @@ if (!isset($_SESSION["username"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="public/css/styles-sidebar.css">
     <link rel="stylesheet" type="text/css" href="public/css/styles-friends-search.css">
+    <link rel="stylesheet" type="text/css" href="public/css/styles-top-side.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
     <title>Garden</title>
 </head>
@@ -51,6 +52,7 @@ if (!isset($_SESSION["username"])) {
         </div>
     </div>
     <div class="main">
+        <div class="top-name">Your friends</div>
         <div class="top-bar">
             <form class="search-bar">
                 <input name="search" type="text" placeholder="Search">
@@ -65,17 +67,17 @@ if (!isset($_SESSION["username"])) {
         </div>
         <div class="people">
             <?php foreach ($friends as $friend): ?>
-                <div class="person">
-                    <div class="name"><?= $friend->getUsername() ?></div>
-                    <form method="post" action="userPhotos">
-                        <input type="hidden" name="username" value=<?= $friend->getUsername() ?>>
-                        <button type="submit">View photos</button>
-                    </form>
-                    <form method="post" action="removeFriend">
-                        <input type="hidden" name="userID" value=<?= $friend->getID() ?>>
-                        <button type="submit">Remove</button>
-                    </form>
-                </div>
+            <div class="person">
+                <div class="name"><?= $friend->getUsername() ?></div>
+                <form method="post" action="userPhotos">
+                    <input type="hidden" name="username" value=<?= $friend->getUsername() ?>>
+                    <button type="submit">View photos</button>
+                </form>
+                <form method="post" action="removeFriend">
+                    <input type="hidden" name="userID" value=<?= $friend->getID() ?>>
+                    <button type="submit">Remove</button>
+                </form>
+            </div>
             <?php endforeach; ?>
         </div>
     </div>

@@ -16,6 +16,7 @@ if (!isset($_SESSION["username"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="public/css/styles-sidebar.css">
     <link rel="stylesheet" type="text/css" href="public/css/styles-friends-search.css">
+    <link rel="stylesheet" type="text/css" href="public/css/styles-top-side.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
     <title>Search</title>
 </head>
@@ -51,17 +52,20 @@ if (!isset($_SESSION["username"])) {
         </div>
     </div>
     <div class="main">
+        <div class="top-name">Find new users</div>
         <div class="top-bar">
             <form class="search-bar">
                 <input name="search" type="text" placeholder="Search">
                 <button type="submit"><img src="public/images/search.svg" alt="search icon"></button>
             </form>
-            <a href="removeUsers">
+            <?php if ($type == "admin") {
+                echo '<a href="removeUsers">
                 <div class="add-photo">
                     <img src="public/images/remove.svg" alt="add icon">
                     <div>Remove</div>
                 </div>
-            </a>
+            </a>';
+            }?>
         </div>
         <div class="people">
             <?php foreach ($users as $user): ?>
@@ -71,36 +75,18 @@ if (!isset($_SESSION["username"])) {
                         <input type="hidden" name="userID" value=<?= $user->getID() ?>>
                         <button type="submit">Add</button>
                     </form>
-                    <?php if ($user->getType() != "admin" && $type == "admin") {
-                        echo '<form method="post" action="removeUser">
-                            <input type="hidden" name="userID" value=' . $user->getID() . '>
-                            <button type="submit">Delete</button>
-                            </form>';
-                    } ?>
                 </div>
             <?php endforeach; ?>
             <?php foreach ($friends as $friend): ?>
                 <div class="person">
                     <div><?= $friend->getUsername() ?></div>
                     <button type="submit" class="added">Added</button>
-                    <?php if ($friend->getType() != "admin" && $type == "admin") {
-                        echo '<form method="post" action="removeUser">
-                            <input type="hidden" name="userID" value=' . $friend->getID() . '>
-                            <button type="submit">Delete</button>
-                            </form>';
-                    } ?>
                 </div>
             <?php endforeach; ?>
             <?php foreach ($pendingFriends as $pendingFriend): ?>
                 <div class="person">
                     <div><?= $pendingFriend->getUsername() ?></div>
                     <button type="submit" class="added">Pending</button>
-                    <?php if ($pendingFriend->getType() != "admin" && $type == "admin") {
-                        echo '<form method="post" action="removeUser">
-                            <input type="hidden" name="userID" value=' . $pendingFriend->getID() . '>
-                            <button type="submit">Delete</button>
-                            </form>';
-                    } ?>
                 </div>
             <?php endforeach; ?>
         </div>

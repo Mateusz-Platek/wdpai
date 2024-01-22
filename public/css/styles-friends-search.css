@@ -20,68 +20,6 @@
     overflow-y: scroll;
 }
 
-.top-bar {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
-
-.top-bar a {
-    text-decoration: none;
-}
-
-.search-bar {
-    height: 60px;
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--white);
-    border-radius: 20px;
-    margin: 30px 0;
-    padding: 0 10px;
-}
-
-.search-bar input {
-    height: 100%;
-    width: 100%;
-    background: transparent;
-    outline: none;
-    border: none;
-    font-size: 2rem;
-    padding: 10px;
-}
-
-.search-bar button {
-    background: transparent;
-    height: 100%;
-    border: none;
-}
-
-.search-bar img {
-    height: 100%;
-    filter: invert(0%) sepia(0%) saturate(18%) hue-rotate(293deg) brightness(95%) contrast(105%);
-}
-
-.add-photo {
-    height: 60px;
-    font-size: 2rem;
-    background-color: var(--red);
-    color: var(--black);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 0 8px;
-}
-
-.add-photo img {
-    height: 100%;
-}
-
 .people {
     width: 100%;
     display: grid;

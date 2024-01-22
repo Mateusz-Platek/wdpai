@@ -16,6 +16,7 @@ if (!isset($_SESSION["username"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="public/css/styles-sidebar.css">
     <link rel="stylesheet" type="text/css" href="public/css/styles-garden.css">
+    <link rel="stylesheet" type="text/css" href="public/css/styles-top-side.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
     <script type="text/javascript" src="public/javascript/search.js" defer></script>
     <title>Garden</title>

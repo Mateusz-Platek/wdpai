@@ -2,34 +2,15 @@
 
 class PhotoRepository extends Repository {
 
-//    public function getPhoto(int $id): ?Photo {
-//        $statement = $this->database->connect()->prepare(
-//            'SELECT * FROM dockerdb.public.photos WHERE dockerdb.public.photos."photoID" = :id'
-//        );
-//        $statement->bindParam(":id", $id, PDO::PARAM_INT);
-//        $statement->execute();
-//
-//        $photo = $statement->fetch(PDO::FETCH_ASSOC);
-//        if (!$photo) {
-//            return null;
-//        }
-//
-//        return new Photo(
-//            $photo["photosID"],
-//            $photo["name"],
-//            $photo["path"],
-//            $photo["description"]
-//        );
-//    }
-
-    public function getPhotosByName(string $name): array
+    public function getPhotosByName(string $name, int $userID): array
     {
         $searchName = '%' .strtolower($name). '%';
 
         $statement = $this->database->connect()->prepare(
-            'SELECT * FROM dockerdb.public.photos WHERE LOWER(photos.name) LIKE :search OR LOWER(photos.description) LIKE :search'
+            'SELECT * FROM photos WHERE photos."usersID" = :userID AND (LOWER(photos.name) LIKE :search OR LOWER(photos.description) LIKE :search)'
         );
-        $statement->bindParam(":search", $searchName, PDO::PARAM_STR);
+        $statement->bindParam(":search", $searchName);
+        $statement->bindParam(":userID", $userID);
         $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_ASSOC);

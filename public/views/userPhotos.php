@@ -53,13 +53,13 @@ if (!isset($_SESSION["username"])) {
         <div class="title"><?= $username ?> photos</div>
         <div class="photos">
             <?php foreach ($userPhotos as $userPhoto): ?>
-                <div class="photo">
-                    <img src="public/uploads/<?= $userPhoto->getPath(); ?>" alt="photo">
-                    <div>
-                        <div class="name"><?= $userPhoto->getName(); ?></div>
-                        <div class="description"><?= $userPhoto->getDescription(); ?></div>
-                    </div>
+            <div class="photo">
+                <img src="public/uploads/<?= $userPhoto->getPath(); ?>" alt="photo">
+                <div>
+                    <div class="name"><?= $userPhoto->getName(); ?></div>
+                    <div class="description"><?= $userPhoto->getDescription(); ?></div>
                 </div>
+            </div>
             <?php endforeach; ?>
         </div>
     </div>

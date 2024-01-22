@@ -52,9 +52,13 @@ if (!isset($_SESSION["username"])) {
     <div class="main">
         <div class="people">
             <?php foreach ($users as $user): ?>
-                <div class="person">
-                    <div class="name"><?= $user->getUsername() ?></div>
-                </div>
+            <div class="person">
+                <div class="name"><?= $user->getUsername() ?></div>
+                <form method="post" action="removeUser">
+                    <input type="hidden" name="userID" value=<?= $user->getID() ?>>
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
             <?php endforeach; ?>
         </div>
     </div>
