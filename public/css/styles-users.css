@@ -15,7 +15,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 40px;
-    padding: 0 90px 30px;
+    padding-bottom: 30px;
     box-sizing: border-box;
 }
 
