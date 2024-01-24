@@ -10,10 +10,10 @@
 }
 
 .upload-form {
-    max-width: 60%;
+    max-width: 55%;
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 30px;
 }
 
 .upload-form input, textarea {
@@ -30,8 +30,8 @@
 .upload-form input, .upload-form button {
     border-radius: 40px;
     border: 3px solid var(--red);
-    font-size: 3.5rem;
-    height: 96px;
+    font-size: 3rem;
+    height: 80px;
     padding: 0;
 }
 

@@ -104,6 +104,7 @@ body {
 
     .options {
         flex-direction: row;
+        gap: 30px;
     }
 
     .option {

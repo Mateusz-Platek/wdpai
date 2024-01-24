@@ -18,7 +18,7 @@ if (!isset($_SESSION["username"])) {
     <link rel="stylesheet" type="text/css" href="public/css/styles-users.css">
     <link rel="stylesheet" type="text/css" href="public/css/styles-topbar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
-    <title>Garden</title>
+    <title>Friends</title>
 </head>
 <body>
 <div class="container">
