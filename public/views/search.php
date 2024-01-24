@@ -54,10 +54,10 @@ if (!isset($_SESSION["username"])) {
     <div class="main">
         <div class="top-name">Find new users</div>
         <div class="top-bar">
-            <form class="search-bar">
+            <div class="search-bar">
                 <input name="search" type="text" placeholder="Search">
                 <button type="submit"><img src="public/images/search.svg" alt="search icon"></button>
-            </form>
+            </div>
             <?php if ($type == "admin") {
                 echo '<a href="removeUsers">
                 <div class="add-photo">

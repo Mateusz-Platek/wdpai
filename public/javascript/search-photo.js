@@ -1,4 +1,4 @@
-const search = document.querySelector('input[name="search"]');
+const searchPhoto = document.querySelector('input[name="search"]');
 const photosContainer = document.querySelector('div[class="photos"]');
 
 function createPhoto(photo) {
@@ -19,7 +19,7 @@ function loadPhotos(photos) {
     })
 }
 
-search.addEventListener("keyup", function (event) {
+searchPhoto.addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
 

@@ -18,7 +18,7 @@ if (!isset($_SESSION["username"])) {
     <link rel="stylesheet" type="text/css" href="public/css/styles-photos.css">
     <link rel="stylesheet" type="text/css" href="public/css/styles-topbar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
-    <script type="text/javascript" src="public/javascript/search.js" defer></script>
+    <script type="text/javascript" src="public/javascript/search-photo.js" defer></script>
     <title>Garden</title>
 </head>
 <body>

@@ -17,6 +17,7 @@ if (!isset($_SESSION["username"])) {
     <link rel="stylesheet" type="text/css" href="public/css/styles-users.css">
     <link rel="stylesheet" type="text/css" href="public/css/styles-topbar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
+    <script type="text/javascript" src="public/javascript/search-remove-user.js" defer></script>
     <title>Remove users</title>
 </head>
 <body>
@@ -72,4 +73,13 @@ if (!isset($_SESSION["username"])) {
     </div>
 </div>
 </body>
+<template class="user-template">
+    <div class="person">
+        <div class="name">name</div>
+        <form method="post" action="removeUser">
+            <input type="hidden" name="userID" value="">
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+</template>
 </html>

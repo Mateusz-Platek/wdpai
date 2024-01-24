@@ -21,6 +21,7 @@ Router::get("pending", "UserController");
 Router::get("acceptFriend", "UserController");
 Router::get("removeUser", "UserController");
 Router::get("userPhotos", "PhotoController");
+Router::get("searchFriends", "UserController");
 Router::get("removeUsers", "UserController");
 Router::get("searchUsers", "UserController");
 
