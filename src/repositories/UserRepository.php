@@ -4,6 +4,22 @@ require_once "autoloader.php";
 
 class UserRepository extends Repository {
 
+    private function createUsers(array $users): array {
+        $result = [];
+        
+        foreach ($users as $user) {
+            $result[] = new User(
+                $user["userID"],
+                $user["username"],
+                $user["email"],
+                $user["password"],
+                $user["type"]
+            );
+        }
+
+        return $result;
+    }
+
     public function getUser(string $username): ?User {
         $statement = $this->database->connect()->prepare(
             'SELECT * FROM users JOIN "accountTypes" ON users."accountTypeID" = "accountTypes"."accountTypeID" WHERE users.username = :username'
@@ -53,41 +69,22 @@ class UserRepository extends Repository {
     }
 
     public function getUsers(string $username): ?array {
-        $result = [];
-
-        $userRepository = new UserRepository();
-
-        $loggedUser = $userRepository->getUser($username);
-
         $user = $this->getUser($username);
+        $userID = $user->getId();
 
         $statement = $this->database->connect()->prepare(
-            'SELECT * FROM users JOIN "accountTypes" ON users."accountTypeID" = "accountTypes"."accountTypeID"'
+            'SELECT * FROM users JOIN "accountTypes" ON users."accountTypeID" = "accountTypes"."accountTypeID"
+                    WHERE users."userID" != :userID'
         );
+        $statement->bindParam("userID", $userID);
         $statement->execute();
 
         $users = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($users as $user) {
-            if ($user["userID"] == $loggedUser->getId()) {
-                continue;
-            }
-
-            $result[] = new User(
-                $user["userID"],
-                $user["username"],
-                $user["email"],
-                $user["password"],
-                $user["type"]
-            );
-        }
-
-        return $result;
+        return $this->createUsers($users);
     }
 
     public function getUserFriends(string $username): ?array {
-        $result = [];
-
         $user = $this->getUser($username);
         $userID = $user->getId();
 
@@ -100,18 +97,8 @@ class UserRepository extends Repository {
         $statement->execute();
 
         $users = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($users as $user) {
-            $result[] = new User(
-                $user["userID"],
-                $user["username"],
-                $user["email"],
-                $user["password"],
-                $user["type"]
-            );
-        }
-
-        return $result;
+        
+        return $this->createUsers($users);
     }
 
     public function getUsersWithoutFriendsByName(string $name, int $userID): ?array {
@@ -130,8 +117,6 @@ class UserRepository extends Repository {
     }
 
     public function getUserPendingFriends(string $username): ?array {
-        $result = [];
-
         $user = $this->getUser($username);
         $userID = $user->getId();
 
@@ -144,18 +129,8 @@ class UserRepository extends Repository {
         $statement->execute();
 
         $users = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($users as $user) {
-            $result[] = new User(
-                $user["userID"],
-                $user["username"],
-                $user["email"],
-                $user["password"],
-                $user["type"]
-            );
-        }
-
-        return $result;
+        
+        return $this->createUsers($users);
     }
 
     public function addUser(string $username, string $email, string $password): void {
@@ -176,7 +151,6 @@ class UserRepository extends Repository {
             'DELETE FROM users WHERE users."userID" = :userID'
         );
         $statement->bindParam(":userID", $userID);
-
         $statement->execute();
     }
 }

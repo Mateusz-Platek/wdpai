@@ -1,7 +1,7 @@
 # BLOOM
 
 ## Table of contents
-- [About](#about);
+- [About](#about)
 - [Tech Stack](#tech-stack)
 - [Requirements](#requirements)
 - [Installation](#installation)
