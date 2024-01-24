@@ -58,7 +58,7 @@
     font-size: 1.5rem;
 }
 
-.person button.added {
+.person button:hover, .person button.added {
     background: var(--black);
     border: var(--red) 2px solid;
     color: var(--red);

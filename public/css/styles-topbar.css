@@ -73,7 +73,6 @@
 
 .add-photo {
     height: 60px;
-    /*width: 100%;*/
     font-size: 2rem;
     background-color: var(--red);
     color: var(--black);

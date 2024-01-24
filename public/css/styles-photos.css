@@ -14,7 +14,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 36px;
-    width: 90%;
+    width: 100%;
 }
 
 .photo {

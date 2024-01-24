@@ -10,7 +10,7 @@
 }
 
 .upload-form {
-    max-width: 55%;
+    width: 650px;
     display: flex;
     flex-direction: column;
     gap: 30px;
