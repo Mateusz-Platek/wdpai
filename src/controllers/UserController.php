@@ -118,6 +118,25 @@ class UserController extends AppController {
         $this->render("removeUsers", ["users" => $users]);
     }
 
+    public function searchUsers(): void {
+        $userRepository = new UserRepository();
+
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : "";
+        $user = $userRepository->getUser($_SESSION["username"]);
+
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header("Content-type: application/json");
+            http_response_code(200);
+
+            $users = $userRepository->getFriendsByName($decoded["search"], $user->getId());
+
+            echo json_encode($users);
+        }
+    }
+
     public function removeUser(): void {
         $userRepository = new UserRepository();
         $userID = $_POST["userID"];

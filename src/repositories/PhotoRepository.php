@@ -2,9 +2,8 @@
 
 class PhotoRepository extends Repository {
 
-    public function getPhotosByName(string $name, int $userID): array
-    {
-        $searchName = '%' .strtolower($name). '%';
+    public function getPhotosByName(string $name, int $userID): array {
+        $searchName = '%' . strtolower($name) . '%';
 
         $statement = $this->database->connect()->prepare(
             'SELECT * FROM photos WHERE photos."usersID" = :userID AND (LOWER(photos.name) LIKE :search OR LOWER(photos.description) LIKE :search)'

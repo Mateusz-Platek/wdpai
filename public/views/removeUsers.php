@@ -53,7 +53,7 @@ if (!isset($_SESSION["username"])) {
     <div class="main">
         <div class="top-name">Remove users</div>
         <div class="top-bar">
-            <div class="search-bar">
+            <div class="search-bar single">
                 <input name="search" type="text" placeholder="Search">
                 <button><img src="public/images/search.svg" alt="search icon"></button>
             </div>

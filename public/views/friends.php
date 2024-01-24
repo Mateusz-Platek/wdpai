@@ -18,6 +18,7 @@ if (!isset($_SESSION["username"])) {
     <link rel="stylesheet" type="text/css" href="public/css/styles-users.css">
     <link rel="stylesheet" type="text/css" href="public/css/styles-topbar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
+    <script type="text/javascript" src="public/javascript/search-user.js" defer></script>
     <title>Friends</title>
 </head>
 <body>
@@ -54,10 +55,10 @@ if (!isset($_SESSION["username"])) {
     <div class="main">
         <div class="top-name">Your friends</div>
         <div class="top-bar">
-            <form class="search-bar">
+            <div class="search-bar">
                 <input name="search" type="text" placeholder="Search">
-                <button type="submit"><img src="public/images/search.svg" alt="search icon"></button>
-            </form>
+                <button><img src="public/images/search.svg" alt="search icon"></button>
+            </div>
             <a href="pending">
                 <div class="add-photo">
                     <img src="public/images/profile.svg" alt="add icon">
@@ -83,4 +84,17 @@ if (!isset($_SESSION["username"])) {
     </div>
 </div>
 </body>
+<template class="user-template">
+    <div class="person">
+        <div class="name">name</div>
+        <form method="post" action="userPhotos">
+            <input type="hidden" name="username" value="">
+            <button type="submit">Photos</button>
+        </form>
+        <form method="post" action="removeFriend">
+            <input type="hidden" name="userID" value="">
+            <button type="submit">Remove</button>
+        </form>
+    </div>
+</template>
 </html>

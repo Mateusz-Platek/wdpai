@@ -25,6 +25,20 @@ class UserRepository extends Repository {
         );
     }
 
+    public function getFriendsByName(string $name, int $userID): array {
+        $searchName = '%' . strtolower($name) . '%';
+
+        $statement = $this->database->connect()->prepare(
+            'SELECT * FROM friendships JOIN users ON friendships."userID2" = users."userID"
+                    WHERE friendships."userID1" = :userID AND friendships."friendshipStatuesID" = 2 AND LOWER(users.username) LIKE :search'
+        );
+        $statement->bindParam(":userID", $userID);
+        $statement->bindParam(":search", $searchName);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getUsers(string $username): ?array {
         $result = [];
 

@@ -32,13 +32,17 @@
 
 .search-bar {
     height: 60px;
-    width: 60%;
+    width: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
     background: var(--white);
     border-radius: 20px;
     padding: 0 10px;
+}
+
+.single {
+    width: 85%;
 }
 
 .search-bar input {

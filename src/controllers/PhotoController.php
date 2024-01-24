@@ -75,7 +75,6 @@ class PhotoController extends AppController {
         $userRepository = new UserRepository();
 
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : "";
-
         $user = $userRepository->getUser($_SESSION["username"]);
 
         if ($contentType === "application/json") {
@@ -85,7 +84,9 @@ class PhotoController extends AppController {
             header("Content-type: application/json");
             http_response_code(200);
 
-            echo json_encode($photoRepository->getPhotosByName($decoded["search"], $user->getId()));
+            $photos = $photoRepository->getPhotosByName($decoded["search"], $user->getId());
+
+            echo json_encode($photos);
         }
     }
 }
