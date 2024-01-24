@@ -40,19 +40,23 @@ class PhotoRepository extends Repository {
 
 
     public function addPhoto(Photo $photo): void {
-        $statement = $this->database->connect()->prepare(
-            'INSERT INTO photos (name, path, "usersID", description) VALUES (?, ?, ?, ?)'
-        );
-
         $userRepository = new UserRepository();
         $user = $userRepository->getUser($_SESSION["username"]);
         $userID = $user->getId();
 
-        $statement->execute([
-            $photo->getName(),
-            $photo->getPath(),
-            $userID,
-            $photo->getDescription()
-        ]);
+        $name = $photo->getName();
+        $path = $photo->getPath();
+        $desc = $photo->getDescription();
+
+        $statement = $this->database->connect()->prepare(
+            'INSERT INTO photos (name, path, "usersID", description)
+                    VALUES (:name, :path, :userID, :desc)'
+        );
+
+        $statement->bindParam(":name", $name);
+        $statement->bindParam(":path", $path);
+        $statement->bindParam(":userID", $userID);
+        $statement->bindParam(":desc", $desc);
+        $statement->execute();
     }
 }

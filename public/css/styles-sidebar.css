@@ -99,6 +99,10 @@ body {
         min-height: 64px;
     }
 
+    .main {
+        padding: 0 20px 16px;
+    }
+
     .name {
         display: none;
     }

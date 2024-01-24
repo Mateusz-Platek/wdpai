@@ -14,10 +14,10 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+    width: 100%;
 }
 
 .photo {
-    height: 400px;
     background: var(--white);
     border-radius: 20px;
 }

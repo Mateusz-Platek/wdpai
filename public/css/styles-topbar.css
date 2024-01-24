@@ -109,9 +109,14 @@
         gap: 16px;
     }
 
+    .top-bar a {
+        width: 20%;
+        min-width: unset;
+    }
+
     .search-bar {
         height: 50px;
-        width: 65%;
+        width: 80%;
         margin: 20px 0;
     }
 
