@@ -114,6 +114,21 @@ class UserRepository extends Repository {
         return $result;
     }
 
+    public function getUsersWithoutFriendsByName(string $name, int $userID): ?array {
+        $searchName = '%' . strtolower($name) . '%';
+
+        $statement = $this->database->connect()->prepare(
+            'SELECT * FROM users WHERE users."userID" != :userID AND users."userID"
+                    NOT IN (SELECT "userID2" FROM friendships WHERE friendships."userID1" = :userID)
+                    AND users.username LIKE :search'
+        );
+        $statement->bindParam(":userID", $userID);
+        $statement->bindParam(":search", $searchName);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getUserPendingFriends(string $username): ?array {
         $result = [];
 

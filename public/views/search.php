@@ -18,6 +18,7 @@ if (!isset($_SESSION["username"])) {
     <link rel="stylesheet" type="text/css" href="public/css/styles-users.css">
     <link rel="stylesheet" type="text/css" href="public/css/styles-topbar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
+    <script type="text/javascript" src="public/javascript/search-user-without-friends.js" defer></script>
     <title>Search</title>
 </head>
 <body>
@@ -77,20 +78,17 @@ if (!isset($_SESSION["username"])) {
                     </form>
                 </div>
             <?php endforeach; ?>
-            <?php foreach ($friends as $friend): ?>
-                <div class="person">
-                    <div class="name"><?= $friend->getUsername() ?></div>
-                    <button type="submit" class="added">Added</button>
-                </div>
-            <?php endforeach; ?>
-            <?php foreach ($pendingFriends as $pendingFriend): ?>
-                <div class="person">
-                    <div class="name"><?= $pendingFriend->getUsername() ?></div>
-                    <button type="submit" class="added">Pending</button>
-                </div>
-            <?php endforeach; ?>
         </div>
     </div>
 </div>
 </body>
+<template class="user-template">
+    <div class="person">
+        <div class="name">name</div>
+        <form method="post" action="addFriend">
+            <input type="hidden" name="userID" value="">
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</template>
 </html>

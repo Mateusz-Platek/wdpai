@@ -13,8 +13,7 @@
 .photos {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 36px;
-    width: 100%;
+    gap: 24px;
 }
 
 .photo {
@@ -30,7 +29,7 @@
     border-radius: 15px 15px 0 0;
 }
 
-.photos .name, .photos.description {
+.photos .name, .photos .description {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,6 +44,12 @@
     font-size: 1.2rem;
     padding: 8px 16px;
     overflow: hidden;
+}
+
+@media (max-width: 1600px) {
+    .photos {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 1150px) {

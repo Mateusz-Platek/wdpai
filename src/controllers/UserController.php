@@ -104,8 +104,8 @@ class UserController extends AppController {
 
         $this->render("search", [
             "users" => $usersWithoutFriends,
-            "friends" => $friends,
-            "pendingFriends" => $pendingFriends,
+//            "friends" => $friends,
+//            "pendingFriends" => $pendingFriends,
             "type" => $loggedUser->getType()
         ]);
     }
@@ -151,6 +151,25 @@ class UserController extends AppController {
             http_response_code(200);
 
             $users = $userRepository->getUsersByName($decoded["search"], $user->getId());
+
+            echo json_encode($users);
+        }
+    }
+
+    public function searchUsersWithoutFriends(): void {
+        $userRepository = new UserRepository();
+
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : "";
+        $user = $userRepository->getUser($_SESSION["username"]);
+
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header("Content-type: application/json");
+            http_response_code(200);
+
+            $users = $userRepository->getUsersWithoutFriendsByName($decoded["search"], $user->getId());
 
             echo json_encode($users);
         }

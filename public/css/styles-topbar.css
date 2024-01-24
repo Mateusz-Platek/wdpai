@@ -88,6 +88,17 @@
     height: 100%;
 }
 
+.add-photo:hover {
+    border-radius: 20px;
+    background: var(--black);
+    color: var(--red);
+    border: 2px var(--red) solid;
+}
+
+.add-photo:hover img {
+    filter: invert(20%) sepia(78%) saturate(5469%) hue-rotate(330deg) brightness(100%) contrast(105%);
+}
+
 @media (max-width: 1150px) {
     .top-name {
         font-size: 2.5rem;

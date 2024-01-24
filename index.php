@@ -15,6 +15,7 @@ Router::get("friends", "UserController");
 Router::get("removeFriend", "UserController");
 Router::get("addFriend", "UserController");
 Router::get("addPhoto", "PhotoController");
+Router::get("searchUsersWithoutFriends", "UserController");
 Router::get("searchPhotos", "PhotoController");
 Router::get("logout", "SecurityController");
 Router::get("pending", "UserController");
